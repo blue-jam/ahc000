@@ -27,3 +27,5 @@ tools/*.html
 tools/*.md
 
 ahc*
+
+.DS_Store
