@@ -26,6 +26,6 @@ err/
 tools/*.html
 tools/*.md
 
-ahc*
+ahc[0-9]*
 
 .DS_Store
