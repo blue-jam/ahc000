@@ -6,19 +6,6 @@ use std::time::Instant;
 
 const TIME_LIMIT_MS: u128 = 1700;
 
-#[derive_readable]
-#[derive(Copy, Clone, Debug, PartialOrd, PartialEq, Hash, Eq)]
-struct Point {
-    x: i32,
-    y: i32,
-}
-
-impl Point {
-    fn new(x: i32, y: i32) -> Self {
-        Self { x, y }
-    }
-}
-
 struct Input {
     n: usize,
     sp: Vec<Point>,
@@ -49,12 +36,10 @@ fn main() {
     }
     let input = Input { n, sp, ip };
 
-    let output = solve(&mut rng, start_time, &input);
-
-    output.print();
+    solve(&mut rng, start_time, &input);
 }
 
-fn solve(rng: &mut SmallRng, start_time: Instant, input: &Input) -> Output {
+fn solve(rng: &mut SmallRng, start_time: Instant, input: &Input) {
     const MAX_XY: i32 = 100000;
 
     let mut best_rectangle = Rectangle {
@@ -83,8 +68,23 @@ fn solve(rng: &mut SmallRng, start_time: Instant, input: &Input) -> Output {
             best_rectangle = rectangle;
         }
     }
-    Output {
+    let output = Output {
         ps: vec![best_rectangle.pbl, Point::new(best_rectangle.pur.x, best_rectangle.pbl.y), best_rectangle.pur, Point::new(best_rectangle.pbl.x, best_rectangle.pur.y)],
+    };
+
+    output.print();
+}
+
+#[derive_readable]
+#[derive(Copy, Clone, Debug, PartialOrd, PartialEq, Hash, Eq)]
+struct Point {
+    x: i32,
+    y: i32,
+}
+
+impl Point {
+    fn new(x: i32, y: i32) -> Self {
+        Self { x, y }
     }
 }
 
