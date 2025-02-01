@@ -43,9 +43,9 @@ mkdir -p tools/out
 $compile
 
 if [ -z "$stdo" ]; then
-  $run < "$input" > "$output"
+  time $run < "$input" > "$output"
 else
-  $run < "$input"
+  time $run < "$input"
 fi
 
 echo >&2
