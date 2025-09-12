@@ -3,8 +3,10 @@ Template repository for AtCoder Heuristic Contest based on AHC039.
 
 ## Cheat Sheet
 
+### Before Contest
+
 ```sh
-pahcer run
+ahc init ahc000
 ```
 
 ### Init
@@ -17,4 +19,29 @@ pahcer init -p ahc000 -o max -l rust
 Interactive init with C++ and objective function `min`:
 ```sh
 pahcer init -p ahc030 -o min -l cpp -i
+```
+
+Download tools
+```sh
+ahc download --zip-url "URL_TO_ZIP_FILE"
+```
+
+### Run
+
+All cases
+
+```sh
+pahcer run
+```
+
+Single case, copy output to clipboard
+
+```sh
+./run.sh 0 -c
+```
+
+Single case, show output on console
+
+```sh
+./run.sh 0 -o
 ```
