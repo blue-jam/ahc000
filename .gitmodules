@@ -1,0 +1,3 @@
+[submodule "pahcer-studio"]
+	path = pahcer-studio
+	url = git@github.com:yunix-kyopro/pahcer-studio.git
