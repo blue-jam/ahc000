@@ -20,6 +20,12 @@ Download tools
 ./download-tools.sh "URL_TO_ZIP_FILE"
 ```
 
+Run `pahcer-studio`
+```sh
+cd pahcer-studio
+yarn install && yarn start
+```
+
 ### Run
 
 All cases
