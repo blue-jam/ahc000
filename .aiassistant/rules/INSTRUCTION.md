@@ -2,4 +2,4 @@
 apply: always
 ---
 
-**ALWAYS READ** `/CLAUDE.md` in the project root for instructions.
+**ALWAYS READ** `/AGENTS.md` in the project root for instructions.
