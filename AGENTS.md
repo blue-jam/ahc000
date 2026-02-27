@@ -1,63 +1,38 @@
-# INSTRUCTIONS
+# 指示書
 
-## Project Overview
+## プロジェクト概要
 
-This is an AtCoder Heuristic Contest (AHC) repository based on AHC039. It's a Rust-based optimization problem solver for competitive programming contests focused on heuristic algorithms.
+このリポジトリは AtCoder Heuristic Contest (AHC) 用のものです。Rust をベースとした、ヒューリスティックアルゴリズムに焦点を当てた競技プログラミングコンテスト用の最適化問題ソルバーです。
 
-## Instruction for solution development
+## 解法開発のための指示
 
-- Problem statement is in `PROBLEM.md`. You can also refer `PROBLEM.html` when you need to understand the input/output format and equation correctly.
-- **ALWAYS** write/update your solution approach in `SOLUTION.md`, when you try a new idea.
-- **DO NOT REVERT** your ongoing implementation when you get stuck. Instead, stop implementation and write your thoughts in `SOLUTION.md`. I'll help you to fix it.
-- Implement your heuristic algorithm in `src/main.rs`.
-- Every time you make changes, **ALWAYS RUN TEST** by `./run.sh 0 -o`.
-- Receive input from `stdin` and output results to `stdout`. Use `proconio` for Input.
-    - Put inputs to `Input` struct.
-    - Put outputs to `Output` struct.
-- Put your logic in `solve()` function.
-    - Add a new function when you try a new solution.
-- **DO NOT MODIFY** files in `tools/`, `pahcer/` and `pahcer-studio/` directories.
-- **DO NOT USE** `timeout` command on execution of the program.
+- 問題文は `@PROBLEM.md` にある。入出力形式や数式を正確に理解する必要がある場合は、`@PROBLEM.html` も参照せよ。
+- 新しいアイデアを試す際は、**必ず** `@LOG.md` に考察と開放の概要を記述せよ。
+- 実装が行き詰まった場合でも、進行中の実装を**リバートを行うな**。代わりに実装を中断し、自分の考えを `@LOG.md` に書き留めよ。私が修正をサポートする。
+- ヒューリスティックアルゴリズムは `@src/main.rs` に実装せよ。
+- 変更を加えるたびに、**必ず** `./run.sh 0 -o` を実行してテストを行え。
 
-## Key Architecture
+- 入力は `stdin` から受け取り、結果は `stdout` に出力せよ。入力には `proconio` を使用せよ。
+    - 入力データは `Input` 構造体に格納せよ。
+    - 出力データは `Output` 構造体に格納せよ。
+- ロジックは `solve()` 関数内に記述せよ。
+    - 新しい解法を試す場合は、新しい関数を追加せよ。
 
-- **Main solver**: `src/main.rs` - Contains the core optimization algorithm.
-- **Tools integration**: Uses `pahcer` runner for automated testing and `pahcer-studio` for visualization
+## アーキテクチャとプロジェクト構成
 
-## Development Commands
+`@docs/architecture.md` を参照せよ。
 
-### Building and Running
+## コマンド
+
+### ビルドと実行
 ```bash
-# Build release binary
+# リリースバイナリのビルド
 cargo build --release
 
-# Run single test case
-./run.sh <test_number>           # Save output to tools/out/
-./run.sh <test_number> -c        # Copy output to clipboard
-./run.sh <test_number> -o        # Print output to console
+# 単一テストケースの実行
+./run.sh <test_number>           # 出力を tools/out/ に保存
+./run.sh <test_number> -o        # 出力をコンソールに表示
+
+# 複数テストケースの実行 - 時間がかかるため、要求がある場合のみ実行
+pahcer run
 ```
-
-### Configuration
-- **pahcer_config.toml**: Defines test execution, scoring, and compilation steps
-- **Test range**: Seeds 0-99 by default in pahcer config
-
-## Project Structure
-
-```
-src/main.rs             # Main solver with random search algorithm
-tools/                  # Contest tools (generator, visualizer) **DO NOT MODIFY**
-  ├── in/               # Input test files
-  ├── out/              # Output files
-  └── src/              # Tool binaries (gen, vis)
-pahcer/                 # Test execution results **DO NOT MODIFY**
-pahcer-studio/          # Web-based visualization (TypeScript/Vite) **DO NOT MODIFY**
-run.sh                  # Single test execution script
-PROBLEM.md              # Problem statement in Markdown **DO NOT MODIFY**
-PROBLEM.html            # Problem statement in HTML **DO NOT MODIFY**
-SOLUTION.md             # Explanation of solution approach.
-```
-
-## Testing Workflow
-
-1. Use `./run.sh N` for quick single case testing during development
-    - where `N` is the test case number (0-)
