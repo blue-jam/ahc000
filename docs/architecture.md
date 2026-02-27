@@ -18,5 +18,6 @@ pahcer-studio/          # ウェブベースの可視化ツール (TypeScript/Vi
 run.sh                  # 単一テスト実行スクリプト
 PROBLEM.md              # Markdown 形式の問題文 **変更禁止**
 PROBLEM.html            # HTML 形式の問題文 **変更禁止**
-SOLUTION.md             # 解法アプローチの解説
+LOG.md                  # 解法アプローチの解説と記録
+optimize.py             # Optuna を用いたパラメータ最適化スクリプト
 ```
