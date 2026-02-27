@@ -6,6 +6,8 @@ use std::time::Instant;
 
 const TIME_LIMIT_MS: u128 = 1700;
 
+const DEFAULT_SEARCH_DEPTH: usize = 5;
+
 struct Input {
     sp: Vec<Point>,
     ip: Vec<Point>,
@@ -34,6 +36,11 @@ fn main() {
         ip: [Point; n],
     }
     let input = Input { sp, ip };
+
+    let _search_depth: usize = std::env::var("SEARCH_DEPTH")
+        .unwrap_or_else(|_| DEFAULT_SEARCH_DEPTH.to_string())
+        .parse()
+        .unwrap();
 
     solve(&mut rng, start_time, &input);
 }
