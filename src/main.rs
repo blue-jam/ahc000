@@ -7,7 +7,6 @@ use std::time::Instant;
 const TIME_LIMIT_MS: u128 = 1700;
 
 struct Input {
-    n: usize,
     sp: Vec<Point>,
     ip: Vec<Point>,
 }
@@ -34,7 +33,7 @@ fn main() {
         sp: [Point; n],
         ip: [Point; n],
     }
-    let input = Input { n, sp, ip };
+    let input = Input { sp, ip };
 
     solve(&mut rng, start_time, &input);
 }
@@ -44,7 +43,10 @@ fn solve(rng: &mut SmallRng, start_time: Instant, input: &Input) {
 
     let mut best_rectangle = Rectangle {
         pbl: Point { x: 0, y: 0 },
-        pur: Point { x: MAX_XY, y: MAX_XY },
+        pur: Point {
+            x: MAX_XY,
+            y: MAX_XY,
+        },
     };
     let mut best_score = calc_score_for_rectangle(&input.sp, &input.ip, &best_rectangle);
     while start_time.elapsed().as_millis() < TIME_LIMIT_MS {
@@ -69,7 +71,12 @@ fn solve(rng: &mut SmallRng, start_time: Instant, input: &Input) {
         }
     }
     let output = Output {
-        ps: vec![best_rectangle.pbl, Point::new(best_rectangle.pur.x, best_rectangle.pbl.y), best_rectangle.pur, Point::new(best_rectangle.pbl.x, best_rectangle.pur.y)],
+        ps: vec![
+            best_rectangle.pbl,
+            Point::new(best_rectangle.pur.x, best_rectangle.pbl.y),
+            best_rectangle.pur,
+            Point::new(best_rectangle.pbl.x, best_rectangle.pur.y),
+        ],
     };
 
     output.print();
